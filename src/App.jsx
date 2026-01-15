@@ -1,21 +1,46 @@
-import './index.css'
+import { useState } from "react";
+import "./index.css";
 
 function App() {
+  const [phone, setPhone] = useState("");
+  const [status, setStatus] = useState(null);
+
+  const handleSubmit = async () => {
+    if (!phone.trim()) return;
+    try {
+      const res = await fetch("http://localhost:3000/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phoneNumber: phone }),
+      });
+      const body = await res.json();
+      setStatus(res.ok ? `Saved as ${body.phoneNumber}` : body.error);
+    } catch (err) {
+      console.error(err);
+      setStatus("Network error");
+    }
+  };
 
   return (
     <>
       <h1>Defrost</h1>
-      <h4>Discard the Frost.</h4>
-      <div class="register">
-        <h2>Sign up Today!</h2>
-        <label for="phone-number">
+      <div className="register">
+        <label htmlFor="phone-number">
           Your Phone Number:
-          <input type="number" name="phone-number"/>
+          <input
+            id="phone-number"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            type="tel"
+          />
         </label>
-        <button class="btn" id="sign-up-btn" onClick={() => alert("signed up!")}>Sign up</button>
+        <button className="btn" onClick={handleSubmit}>
+          Sign up
+        </button>
+        {status && <p>{status}</p>}
       </div>
     </>
-  )
+  );
 }
 
 export default App
