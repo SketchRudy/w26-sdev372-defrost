@@ -4,5 +4,10 @@ const connection = mysql.createConnection({
     host: DB_HOST,
     user: DB_USER,
     password: DB_PASS,
-    database: 'def'
+    database: 'defrost'
 })
+
+connection.connect(function(err) {
+    if (err) throw err;
+    console.log("Connenction is secure");
+});
