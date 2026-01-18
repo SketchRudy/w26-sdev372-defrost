@@ -23,17 +23,19 @@ function App() {
 
   return (
     <>
-      <h1>Defrost</h1>
+      <h1><span>Defrost</span></h1>
       <div className="register">
-        <label htmlFor="phone-number">
-          Your Phone Number:
-          <input
-            id="phone-number"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            type="tel"
-          />
-        </label>
+        <div class="phone-input">
+          <label htmlFor="phone-number">
+            Enter a Phone Number:
+            <input
+              id="phone-number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              type="tel"
+            />
+          </label>
+        </div>
         <button className="btn" onClick={handleSubmit}>
           Sign up
         </button>
