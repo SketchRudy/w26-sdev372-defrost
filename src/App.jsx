@@ -15,6 +15,7 @@ function App() {
       });
       const body = await res.json();
       setStatus(res.ok ? `Saved as ${body.phoneNumber}` : body.error);
+      alert("Thank you for your submission!")
     } catch (err) {
       console.error(err);
       setStatus("Network error");
