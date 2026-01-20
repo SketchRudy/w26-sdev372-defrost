@@ -1,85 +1,51 @@
-# README
-## 1. Project Overview
-- **ShelfSpin - Spin your shelf. Start your next book.**
-- **Problem Statement:** Many people love reading books, but many of those don't.
-This application allows the user to find books that will target what they would
-currently want to read based off a few questions. The application will randomly
-pick a book based on rules such as length, genre, and mood
-- **Target Users:** People who read and non-readers will give it a try
----
-## 2. Feature Breakdown
-- **MVP Features:**
-A very simple website with questions somewhere to start the book-choosing
-process
-A logo
-A catchphrase, about us or something that tells the user what we are
-- **Extended Features:**
-Improving book-choosing algorithm based off users questions and the book they
-decided to read
-Possibly some sort of book forumn
-Possible links of where to read the book online (Free options prioritized)
----
-## 3. Data Model Planning
-- **Core Entities:** What are the main data objects? What are you storing?
-User: Account info/profile
-Book: Title, subtitle, description, pageCount, language, publishedDate
-Author: Author
-UserBook: Status, Priority, added_at, started_at, finished_at
-tag/shelf: Fantasy, Short reads, Spiritual, School
-Rouletteprofile(spin rules): min_pages, max_pages, allowed_tags, excluded_tags,
-exclude_finished, exclude_series
-SpinHistory: helps users avoid repeats and adds a “story” to the app
-- **Key Relationships:** How do these entities connect / relate to each other?
-Users <-> Books
-A user can have many books
-Books <-> Authors
-One book can have many authors
-One book can be on many books
-Users <-> Tags
-Tag is owned by a user
----
-## 4. User Experience
-- **User Flows:** How do users accomplish key tasks?
-Visiting the site, there will be a filter (current mood, length of book, genre,
-etc) and then they could click submit to roll the wheel / shelf to find the next
-book they can read along with links of pdf files or other places they could read
-it, free options should be prioritized at the top, and paid second.
-- **Wireframes/Sketches:** Basic layout ideas for main screens
-+----------------------------------------------------------------------------------
-+
-| ShelfSpin [ Search title / author / ISBN ] [+ Add]
-|
-| [Spin] [Me]
-|
-+-------------------------+-------------------------------------------+------------
-+
-| Filters | Spin Zone | Spin Rules
-|
-| - Eligible | +---------------------+ Next Pick | Profile:
-|
-| - All TBR | | Cover | Book — Author | Weeknight
-|
-| - Reading | | | Why picked: | Quick
-|
-| - Finished | +---------------------+ • tags: Short | pages 0-
-250|
-| | [SPIN NOW] [Exclude] • pages ok | weight:
-ON |
-| Tags | [Start Reading] [Re-spin] |
-|
-| - Fantasy +-------------------------------------------+ | Recent:
-|
-| - Short | Eligible Pool (Cards/List) | • Book A
-|
-| - School | Cover | Title | Tags | Pages | Priority | • Book B
-|
-| | ... |
-|
-| Saved Spins | |
-|
-| - Weeknight Quick | |
-|
-| - Weekend Deep | |
-|
-+-------------------------+-------------------------------------------+------------
-+
+# Project Overview
+## Project Name & Tagline
+Defrost: Discard the Frost
+
+## Problem Statement: What problem does this solve? Be specific!
+- Waking up on cold mornings is already hard enough. It's worse when you're all ready to start your day just to see your car's windows are freezing with frost. With Defrost, on the mornings that the app detects (by checking the night before) the weather is cold enough to freeze your windows: you will recieve a notification to wake up earlier telling you to defrost your car.
+
+## Target Users: Who would actually use this?
+- Students heading to school early in the morning, employees heading to work, or simply a parent taking their child to school. People living in cold or even snowy climates. Seattle has seasons, like the one we're currently in, where this is a recurring problem people face. 
+
+# Feature Breakdown
+## MVP Features: Core functionality that could be built in the first sprint or two
+1. Weather API successfully handles requests. User is able to see future forecast.
+2. Website successfully sends a text to a users phone from the email the user inputs
+
+## Extended Features: Additional functionality for later development phases
+1. Logic of logins and storing that data
+2. Database of the fastest to slowest defrosters when looking at each car maker
+3. Interface asking for user's car's defrost time then using that to base how much earlier the user should plan ahead. (Ex. if Toyotas defrost in 15min and Hondas in 12min, the separate users of each car would be told to defrost for at least that many minutes)
+
+# Data Model Planning
+## Core Entities: What are the main data objects? What are you storing?
+- User: stores phone number, location, and wake-up time
+- Defrost Preference: stores temperature threshold and how much earlier to wake up
+- Notification Log (optional): records whether a text was sent
+
+## Key Relationships: How do these entities connect / relate to each other?
+- A User has one defrost preference
+- A User can have many notification logs
+- The defrost preference belongs to a User
+
+# User Experience
+## User Flows: How do users accomplish key tasks?
+1. User opens the web app
+2. User enters phone number, location, wake-up time, and temperature preference
+3. User submits the form
+4. The app checks the weather each night
+5. If it’s cold enough, the app sends a text reminder to wake up earlier
+
+## Wireframes/Sketches: Basic layout ideas for main screens
+### HERO: 
+#### “Tomorrow Morning Status”
+- 🌡 Forecast low: 26°F
+- 🚗 Defrost reminder: ON
+- ⏰ Suggested alarm: 6:30 AM
+- 📍 Location: Seattle
+
+### PAGE / SECTION FOR LOGS:
+#### “Past Reminders”
+- Jan 4 – Sent (24°F)
+- Jan 3 – Skipped (41°F)
