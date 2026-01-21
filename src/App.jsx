@@ -14,8 +14,11 @@ function App() {
         body: JSON.stringify({ phoneNumber: phone }),
       });
       const body = await res.json();
-      setStatus(res.ok ? `Saved as ${body.phoneNumber}` : body.error);
-      alert("Thank you for your submission!")
+      if (res.ok) {
+        setStatus(`Saved as ${body.phoneNumber}`);
+      } else {
+        setStatus(body.error);
+      }
     } catch (err) {
       console.error(err);
       setStatus("Network error");
@@ -32,7 +35,10 @@ function App() {
             <input
               id="phone-number"
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={(e) => {
+                const digits = e.target.value.replace(/\D/g, "");
+                setPhone(digits.slice(0, 10));
+              }}
               type="tel"
             />
           </label>

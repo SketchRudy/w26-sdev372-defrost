@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "dev": "nodemon backend/index.js",
     "start": "node backend/index.js",
-    "db:init": "mysql < backend/db/schema.sql && mysql < backend/db/seed.sql",
+    "db:init": "mysql < backend/db/user.sql && mysql < backend/db/schema.sql",
     "dev:frontend": "vite"
   },
   "dependencies": {

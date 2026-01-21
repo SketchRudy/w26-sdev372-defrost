@@ -49,3 +49,12 @@ Defrost: Discard the Frost
 #### “Past Reminders”
 - Jan 4 – Sent (24°F)
 - Jan 3 – Skipped (41°F)
+
+# Local setup (database workflow)
+1. **Pull the repo** and install dependencies with `npm install`.
+2. **Edit `backend/db/user.sql`** and replace the placeholder username/password with values of your own.
+3. **Mirror those credentials in `.env`**—set `DB_NAME`, `DB_USER`, and `DB_PASSWORD` to match your entries. Keeping `.env` local.
+4. **Run `npm run db:init`**; it now executes `user.sql` followed by `schema.sql`, so the user and schema are created consistently for everyone.
+5. **Start both servers**: `npm run dev` for the backend and `npm run dev:frontend` for the Vite UI in separate terminals so the API and frontend can talk to each other.
+
+After these steps the backend has a valid DB/user and the frontend can post phone numbers without requiring extra manual SQL work. If you later want to script this further, wrap the CLI edits in a helper, but this flow keeps onboarding explicit and repeatable.
