@@ -1,8 +1,6 @@
-DROP DATABASE IF EXISTS defrost_app;
 CREATE DATABASE defrost_app;
-USE defrost_app;
 
-DROP TABLE IF EXISTS defrost_users;
+USE defrost_app;
 
 CREATE TABLE defrost_users (
   id INT AUTO_INCREMENT PRIMARY KEY,

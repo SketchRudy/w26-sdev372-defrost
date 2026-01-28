@@ -1,4 +1,3 @@
-   CREATE DATABASE defrost_app;
-   CREATE USER 'dev'@'localhost' IDENTIFIED BY 'password';
-   GRANT ALL PRIVILEGES ON defrost_app.* TO 'dev'@'localhost';
+   CREATE USER 'DB_USER'@'DB_HOST' IDENTIFIED BY 'DB_PASSWORD';
+   GRANT ALL PRIVILEGES ON defrost_app.* TO 'DB_USER'@'DB_HOST';
    FLUSH PRIVILEGES;
